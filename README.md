@@ -1,8 +1,8 @@
 # hardcandy
 https://github.com/bnfinet/hardcandy
 
-Benjamin Foote  
-hardcandy@bnf.net 
+Benjamin Foote     
+hardcandy@bnf.net   
 http://bnf.net
 
 hardcandy is a big sucker!
@@ -11,13 +11,14 @@ Periodically gets things from the internet with a specific lifecycle (a poller o
 
 The base library hardcandy.js is meant to be inherited.  Examples for rss and tweets are included.
 
-We use this at the personal telco project as a backing service for api.personaltelco.net 
-http://personaltelco.net
+We use this at the personal telco project as a backing service for api.personaltelco.net  
+http://personaltelco.net  
+https://github.com/personaltelco/rest-api  
 
 ## Installation
 
 ```bash
-    npm install git@github.com:bnfinet/hardcandy.git
+    npm install --save git+ssh://git@github.com:bnfinet/hardcandy.git
 ```
 
 ## the lifecycle of a hardcandy item
@@ -39,24 +40,20 @@ http://personaltelco.net
 
 
 
-RSS Feeds
-==========
 
-backed by FeedParser
 
 ## Usage
 
-RSS
------
+### RSS
+backed by FeedParser
 
     var HCRss = require('../lib/hc_rss.js');
     var hcrss = new HCRss({
-        type : 'rss',
-        max_items : 5,
-        // update_frequency : 61 * 60 * 1000,
-        update_frequency: 7 * 1000,
-        timeout : 24 * 60 * 60 * 1000,
-        errlimit : 20,
+        type : 'rss',                       // a short string
+        max_items : 5,                      // the max items we'll store at a time for each url
+        update_frequency : 61 * 60 * 1000,  // how often the polling should kick off
+        timeout : 4 * 24 * 60 * 60 * 1000,  // if we don't successfully get the feed for longer than maximum_age we drop the feed
+        errlimit : 20,                      // errs allowed before we drop 
         file : __dirname + '/data/_hc_rss.json'  // no file, no persistence
     });
 
@@ -85,8 +82,8 @@ RSS
     });
 
 
-Twitter
--------
+### Twitter
+using ntwitter
 
     var HCTwitter = require('hc_twitter');
     var hctwitter = new HCTwitter({
@@ -110,15 +107,14 @@ Twitter
             // handle it
         }
         // publish items
-        console.log('here are the rss entries!', items);
+        console.log('here are the tweets!', items);
     }
-    hctwitter.getItems();
-    hctwitter.registerSource(url, function(err, items) {
+    hctwitter.getItems(url, function(err, items) {
         if (err) {
             // handle it
         }
         // publish items
-        console.log('here are the rss entries!', items);
+        console.log('here are the tweets!', items);
     }
 
 

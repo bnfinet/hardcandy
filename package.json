@@ -1,0 +1,38 @@
+{
+  "name": "hardcandy",
+  "version": "0.0.1",
+  "description": "periodically get stuff from the internet in an ephemeral manner (mostly tweets and rss) using polling",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "bugs": {
+      "url": "https://github.com/bnfinet/hardcandy/issues"
+  },
+  "repository": { 
+      "type" : "git",
+      "url" : "https://github.com/bnfinet/hardcandy.git"
+  },
+  "keywords": [
+    "rss",
+    "twitter",
+    "hardcandy",
+    "download",
+    "polling"
+  ],
+  "author": "Benjamin Foote <hardcandy@bnf.net> (http://bnf.net)",
+  "license": "MIT",
+  "dependencies": {
+    "feedparser": "~0.16.3",
+    "request": "~2.30.0",
+    "ntwitter": "~0.5.0",
+    "node-uuid": "~1.4.1"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "chai": "~1.8.1",
+    "mocha": "~1.16.2",
+    "grunt-contrib-jshint": "~0.8.0"
+  }
+}

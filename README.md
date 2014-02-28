@@ -124,7 +124,7 @@ If you look at ./lib/hc_tweets.js you'll see an inheritance from hardcandy.js an
 
 You should create the getAndParse function with the following basic form....
 
-    HardCandyTweets.prototype.getAndParse = function(key, cb) {
+    MyAwesomeHC.prototype.getAndParse = function(key, cb) {
         var self = this;
         self.log('getAndParse', key);
         
@@ -153,7 +153,7 @@ TODO
 ---------
 spin hc_rss.js and hc_tweets.js off into their own repos
 use a key=value store, probably Mongo, as an optional persistence layer
-
+or perhaps node-lru-cache
 
 
 
